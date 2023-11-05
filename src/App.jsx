@@ -1,14 +1,13 @@
 import { Row, Col } from "react-bootstrap";
-import { Listado } from "./components/listado/Listado";
-// obtener data de archivo baseColaboradores
-import { listadoInicial } from "./assets/js/listadoInicial";
+import { Listado } from "./components/listado/Listado.jsx";
+import { baseColaboradores } from "./assets/js/baseColaboradores.js";
 import { useState } from "react";
-import { Formulario } from "./components/formulario/Formulario";
-import { Alert } from "./components/alert/Alert";
+import { Formulario } from "./components/formulario/Formulario.jsx";
+import { Alert } from "./components/alert/Alert.jsx";
 
 const App = () => {
   // almacenar data en un hook
-  const [colaboradores, setColaboradores] = useState(listadoInicial); // []
+  const [colaboradores, setColaboradores] = useState(baseColaboradores); // []
 
   const [alert, setAlert] = useState({
     color: "",

@@ -1,4 +1,4 @@
-export const listadoInicial = [
+export const baseColaboradores = [
   {
     id: "1",
     nombre: "Juan Soto",
