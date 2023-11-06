@@ -20,6 +20,7 @@ export const Buscador = ({ colaboradores, setColaboradores }) => {
       ) {
         return elemento;
       } else {
+        
       }
     });
     setColaboradores(resultadoiFinal);
