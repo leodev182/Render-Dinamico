@@ -4,8 +4,8 @@ import { useState } from "react";
 
 export const Formulario = ({ setAlert, setColaboradores, colaboradores }) => {
   const [formulario, setFormulario] = useState({
-    correo: "",
     nombre: "",
+    correo: "",
     edad: "",
     cargo: "",
     telefono: "",
@@ -15,7 +15,7 @@ export const Formulario = ({ setAlert, setColaboradores, colaboradores }) => {
     setFormulario({ ...formulario, [valor.target.name]: valor.target.value });
   };
 
-  console.log(formulario);
+  // console.table(formulario);
 
   const onsubmit = (e) => {
     e.preventDefault();
@@ -29,56 +29,61 @@ export const Formulario = ({ setAlert, setColaboradores, colaboradores }) => {
     ) {
       setAlert({
         color: "danger",
-        mensaje: "Deben estar llenos los campos",
+        mensaje: "Debes llenar todos los campos!",
       });
       return;
+    } else {
+      setAlert({
+        color: "success",
+        mensaje: "Agregado con Exito!",
+      });
     }
 
-    setFormulario({
-      correo: "",
-      nombre: "",
-      edad: "",
-      cargo: "",
-      telefono: "",
-    });
-    // Agregar registro
-    // id unico / UUID
-    const newColaborador = { ...formulario, id: "asdasd" };
+    const i = Date.now().toString(30);
+    const newColaborador = { ...formulario, id: i };
     setColaboradores([...colaboradores, newColaborador]);
+
+    e.target.reset();
   };
+
+  console.table(colaboradores);
 
   return (
     <Form onSubmit={onsubmit}>
       <Form.Group className="mb-3">
         <Form.Control
+          className="mb-2"
           name="nombre"
           type="text"
-          placeholder="Nombre"
+          placeholder="Nombre del colaborador"
           onChange={onchange}
-          value={formulario.nombre}
         />
         <Form.Control
+          className="mb-2"
           name="correo"
           type="email"
-          placeholder="correo"
+          placeholder="Email del colaborador"
           onChange={onchange}
         />
         <Form.Control
+          className="mb-2"
           name="edad"
-          type="number"
-          placeholder="Edad"
+          type="text"
+          placeholder="Edad del colaborador"
           onChange={onchange}
         />
         <Form.Control
+          className="mb-2"
           name="cargo"
           type="text"
-          placeholder="Cargo"
+          placeholder="Cargo del colaborador"
           onChange={onchange}
         />
         <Form.Control
+          className="mb-2"
           name="telefono"
-          type="number"
-          placeholder="Teléfono"
+          type="text"
+          placeholder="Teléfono del colaborador"
           onChange={onchange}
         />
         <Button variant="primary" type="submit" className="w-100">

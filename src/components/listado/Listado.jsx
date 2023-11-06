@@ -13,6 +13,7 @@ export const Listado = ({ colaboradores }) => {
             <th>Edad</th>
             <th>Cargo</th>
             <th>Telefono</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -23,10 +24,9 @@ export const Listado = ({ colaboradores }) => {
               <td>{colaborador.edad}</td>
               <td>{colaborador.cargo}</td>
               <td>{colaborador.telefono}</td>
+              <td></td>
             </tr>
           ))}
-
-          {/* {renderTablaColaboradores()} */}
         </tbody>
       </Table>
     </>
