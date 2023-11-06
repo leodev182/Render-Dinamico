@@ -25,7 +25,10 @@ const App = () => {
         <h1 className="text-start">Lista de colaboradores</h1>
         <Row>
           <Col sm={12} md={9} xl={6} className="mb-3">
-            <Buscador />
+            <Buscador
+              colaboradores={colaboradores}
+              setColaboradores={setColaboradores}
+            />
           </Col>
         </Row>
         <Row>
