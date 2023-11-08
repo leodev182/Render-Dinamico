@@ -1,7 +1,16 @@
-import { Table } from "react-bootstrap";
+import { Table, CloseButton } from "react-bootstrap";
 
-export const Listado = ({ colaboradores }) => {
-  //   console.table(colaboradores);
+export const Listado = ({ results, setResults, setAlert }) => {
+  //   console.table(results);
+
+  const deleteP = (id) => {
+    const encontrarP = results.filter((persona) => persona.id !== id);
+    setResults(encontrarP);
+    setAlert({
+      color: "warning",
+      mensaje: "Eliminaste un colaborador",
+    });
+  };
 
   return (
     <>
@@ -17,14 +26,16 @@ export const Listado = ({ colaboradores }) => {
           </tr>
         </thead>
         <tbody>
-          {colaboradores.map((colaborador) => (
+          {results.map((colaborador) => (
             <tr key={colaborador.id}>
               <td>{colaborador.nombre}</td>
               <td>{colaborador.correo}</td>
               <td>{colaborador.edad}</td>
               <td>{colaborador.cargo}</td>
               <td>{colaborador.telefono}</td>
-              <td></td>
+              <td className="text-center">
+                <CloseButton onClick={() => deleteP(colaborador.id)} />
+              </td>
             </tr>
           ))}
         </tbody>

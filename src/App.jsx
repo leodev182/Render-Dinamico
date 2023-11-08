@@ -11,9 +11,8 @@ import {
 import { useState } from "react";
 
 const App = () => {
-  // almacenar data en un hook
-  const [colaboradores, setColaboradores] = useState(baseColaboradores); // []
-
+  const [colaboradores, setColaboradores] = useState(baseColaboradores);
+  const [results, setResults] = useState(baseColaboradores);
   const [alert, setAlert] = useState({
     color: "",
     mensaje: "",
@@ -26,14 +25,20 @@ const App = () => {
         <Row>
           <Col sm={12} md={9} xl={6} className="mb-3">
             <Buscador
-              colaboradores={colaboradores}
               setColaboradores={setColaboradores}
+              colaboradores={colaboradores}
+              setResults={setResults}
             />
           </Col>
         </Row>
         <Row>
           <Col sm={12} md={9}>
-            <Listado colaboradores={colaboradores} />
+            <Listado
+              colaboradores={colaboradores}
+              results={results}
+              setResults={setResults}
+              setAlert={setAlert}
+            />
           </Col>
           <Col sm={12} md={3}>
             <h2 className="mb-3">Agregar colaborador</h2>
@@ -41,6 +46,8 @@ const App = () => {
               setAlert={setAlert}
               setColaboradores={setColaboradores}
               colaboradores={colaboradores}
+              setResults={setResults}
+              results={results}
             />
             {alert.mensaje !== "" && (
               <Alert variant={alert.color}>{alert.mensaje}</Alert>

@@ -1,8 +1,14 @@
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const Formulario = ({ setAlert, setColaboradores, colaboradores }) => {
+export const Formulario = ({
+  setAlert,
+  setColaboradores,
+  colaboradores,
+  setResults,
+  results,
+}) => {
   const [formulario, setFormulario] = useState({
     nombre: "",
     correo: "",
@@ -42,11 +48,12 @@ export const Formulario = ({ setAlert, setColaboradores, colaboradores }) => {
     const i = Date.now().toString(30);
     const newColaborador = { ...formulario, id: i };
     setColaboradores([...colaboradores, newColaborador]);
+    setResults([...results, newColaborador]);
 
     e.target.reset();
   };
 
-  console.table(colaboradores);
+  // console.table(colaboradores);
 
   return (
     <Form onSubmit={onsubmit}>
@@ -68,7 +75,7 @@ export const Formulario = ({ setAlert, setColaboradores, colaboradores }) => {
         <Form.Control
           className="mb-2"
           name="edad"
-          type="text"
+          type="number"
           placeholder="Edad del colaborador"
           onChange={onchange}
         />
